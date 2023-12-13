@@ -13,7 +13,10 @@ from schemas import CurrencyRateOut
 app = FastAPI()
 
 
-@app.get("/rates", response_model=CurrencyRateOut)
+@app.get(
+    "/rates",
+    response_model=CurrencyRateOut,
+)
 async def get_rates(
     from_currency: str,
     to_currency: str,

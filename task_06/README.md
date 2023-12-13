@@ -5,3 +5,13 @@
 ```shell
 alembic init -t async alembic
 ```
+
+Запуск сервиса Postgres:
+```shell
+docker compose up -d pg
+```
+
+Остановка сервиса Postgres:
+```shell
+docker compose stop pg
+```

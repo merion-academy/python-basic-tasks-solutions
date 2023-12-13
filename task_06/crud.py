@@ -72,7 +72,7 @@ async def fetch_rates(
     date: date_type,
     from_currency: str,
     to_currency: str,
-):
+) -> CurrencyRate:
     from_currency = from_currency.lower()
     to_currency = to_currency.lower()
     currency_rate: CurrencyRate | None = await get_currency_rate_from_db(
