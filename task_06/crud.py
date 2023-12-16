@@ -56,15 +56,15 @@ async def save_rate_to_db(
     to_currency: str,
     rate: Decimal,
 ):
-    rate = CurrencyRate(
+    currency_rate = CurrencyRate(
         date=date,
         from_currency=from_currency,
         to_currency=to_currency,
         rate=rate,
     )
-    session.add(rate)
+    session.add(currency_rate)
     await session.commit()
-    return rate
+    return currency_rate
 
 
 async def fetch_rates(
