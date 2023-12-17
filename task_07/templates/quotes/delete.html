@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Delete quote #{{ quote.id }}
+{% endblock %}
+
+{% block main %}
+  <h1>
+    Confirm delete quote #{{ quote.id }}
+  </h1>
+
+  <p class="lead">
+    Are you sure you want to delete quote
+    <em>&laquo;{{ quote.text }}&raquo;</em>?
+  </p>
+
+
+  <div class="my-3">
+    <form method="post">
+      <input
+        type="hidden"
+        name="csrf_token"
+        value="{{ csrf_token() }}"
+      />
+
+      <div
+        class="btn-group"
+        role="group"
+      >
+
+        <a
+          class="btn btn-secondary"
+          href="{{ url_for('quotes_app.details', quote_id=quote.id) }}"
+          role="button"
+        >Cancel</a>
+        <span class="mx-1"></span>
+        <button
+          type="submit"
+          class="btn btn-danger"
+        >Delete</button>
+      </div>
+    </form>
+  </div>
+
+{% endblock %}

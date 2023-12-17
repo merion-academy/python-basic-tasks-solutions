@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Quote #{{ quote.id }}
+{% endblock %}
+
+{% block main %}
+  <div class="my-3">
+    <p class="lead">{{ quote.text }}</p>
+  </div>
+
+  <div class="my-3">
+    <a
+      class="btn btn-outline-secondary"
+      href="{{ url_for('quotes_app.list') }}"
+      role="button"
+    >Back</a>
+    <a
+      class="btn btn-outline-danger"
+      href="{{ url_for('quotes_app.delete', quote_id=quote.id) }}"
+      role="button"
+    >Delete</a>
+  </div>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Quotes
+{% endblock %}
+
+{% block main %}
+  <h1>Quotes list:</h1>
+  {% if quotes %}
+  <div class="list-group">
+    {% for quote in quotes %}
+        <a
+          class="list-group-item text-primary"
+          href="{{ url_for('quotes_app.details', quote_id=quote.id) }}"
+        >{{ quote.text }}</a>
+    {% endfor %}
+  </div>
+  {% else %}
+    <h3>No quotes yet</h3>
+  {% endif %}
+
+  <div class="my-3">
+    <a
+      class="btn btn-primary"
+      href="{{ url_for('quotes_app.add') }}"
+    >Add a new quote</a>
+  </div>
+{% endblock %}
