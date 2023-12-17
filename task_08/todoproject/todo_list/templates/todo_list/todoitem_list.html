@@ -1,0 +1,45 @@
+{% extends 'todo_list/base.html' %}
+
+{% block title %}
+  ToDo List
+{% endblock %}
+
+{% block content %}
+  <h2>Your ToDo List</h2>
+
+  <div>
+    <ul>
+      {% for todo in object_list %}
+        <li>
+
+          <form
+            style="display:inline;"
+            action="{% url 'todo-list:toggle-item' pk=todo.pk %}"
+            method="post"
+          >
+            {% csrf_token %}
+            <input
+              type="submit"
+              value="{% if todo.done %}✔️{% else %}🔲{% endif %}"
+            />
+          </form>
+
+          <span class="{% if todo.done %}
+          	text-decoration-line-through
+          {% endif %} "
+          >{{ todo.text }}</span>
+
+          <a
+            class="text-decoration-none"
+            href="{% url 'todo-list:delete-item' pk=todo.pk %}"
+          >
+            ❌
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="my-3">
+    {% include "todo_list/add-todo-form.html" %}
+  </div>
+{% endblock %}

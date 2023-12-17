@@ -1,0 +1,14 @@
+<h3>Add a new todo</h3>
+
+<form
+  method="post"
+  action="{% url 'todo-list:create-item' %}"
+>
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input
+    class="btn btn-primary"
+    type="submit"
+    value="Add"
+  />
+</form>

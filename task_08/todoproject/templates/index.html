@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	ToDo App
+{% endblock %}
+
+{% block content %}
+  <h2>Todos app</h2>
+  <div>
+    <a
+      class="btn btn-primary"
+      href="{% url 'todo-list:items-list' %}"
+    >Go to my todos</a>
+  </div>
+{% endblock %}

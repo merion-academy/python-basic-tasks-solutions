@@ -1,0 +1,15 @@
+{% extends 'todo_list/base.html' %}
+
+{% block title %}
+  Create ToDo
+{% endblock %}
+
+{% block content %}
+  {% include "todo_list/add-todo-form.html" %}
+  <div class="my-2">
+    <a
+      class="btn btn-secondary"
+      href="{% url 'todo-list:items-list' %}"
+    >Back to items list</a>
+  </div>
+{% endblock %}
