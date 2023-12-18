@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Create category
+{% endblock %}
+
+{% import 'macros/errors.html' as errors_helper %}
+
+{% block content %}
+  <h1>Add a new category</h1>
+
+  <div>
+    <form method="post">
+      {{ errors_helper.show_alerts(form) }}
+
+      {{ form.hidden_tag() }}
+
+      {{ form.name.label(class="form-label") }}
+      {{ form.name(size=20, class="form-control") }}
+
+      {{ form.description.label(class="form-label") }}
+      {{ form.description(size=20, class="form-control") }}
+
+      {{ form.submit(class="mt-2 btn btn-primary") }}
+    </form>
+  </div>
+{% endblock %}

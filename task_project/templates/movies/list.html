@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Movies
+{% endblock %}
+
+{% import 'macros/movies-list.html' as ml %}
+
+{% block content %}
+  <h1>Movies</h1>
+
+  {{ ml.movies_list(movies) }}
+
+  <div class="my-3">
+    <a
+      class="btn btn-primary"
+      href="{{ url_for('movies_app.add') }}"
+    >Add a new movie</a>
+  </div>
+{% endblock %}

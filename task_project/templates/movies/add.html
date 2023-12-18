@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Create movie
+{% endblock %}
+
+{% import 'macros/errors.html' as errors_helper %}
+
+{% block content %}
+  <h1>Add a new movie</h1>
+
+  <div>
+    <form method="post">
+      {{ errors_helper.show_alerts(form) }}
+
+      {{ form.hidden_tag() }}
+
+      <div class="mb-3 row">
+        {{ form.title.label(class="col-sm-3 col-md-2 col-form-label") }}
+        <div class="col-sm-9 col-md-10">
+          {{ form.title(size=20, class="form-control") }}
+        </div>
+      </div>
+      <div class="mb-3 row">
+        {{ form.year.label(class="col-sm-3 col-md-2 col-form-label") }}
+        <div class="col-sm-9 col-md-10">
+          {{ form.year(size=20, class="form-control") }}
+        </div>
+      </div>
+      <div class="mb-3 row">
+        {{ form.category.label(class="col-sm-3 col-md-2 col-form-label") }}
+        <div class="col-sm-9 col-md-10">
+          {{ form.category(class="form-select") }}
+        </div>
+      </div>
+
+      {{ form.submit(class="mt-2 btn btn-primary") }}
+    </form>
+  </div>
+
+  <div class="my-3">
+    <a
+      class="btn btn-secondary"
+      href="{{ url_for('movies_app.list') }}"
+    >Back to movies list</a>
+  </div>
+{% endblock %}

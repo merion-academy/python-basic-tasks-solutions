@@ -1,0 +1,14 @@
+{% macro movies_list(movies) %}
+  {% if movies %}
+    <div class="list-group">
+      {% for movie in movies %}
+        <a
+          class="list-group-item text-primary"
+          href="{{ url_for('movies_app.details', movie_id=movie.id) }}"
+        >{{ movie.title }} ({{ movie.year }})</a>
+      {% endfor %}
+    </div>
+  {% else %}
+    <h3>No movies yet</h3>
+  {% endif %}
+{% endmacro %}

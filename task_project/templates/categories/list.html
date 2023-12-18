@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Categories
+{% endblock %}
+
+{% block content %}
+  <h1>Categories list:</h1>
+  {% if categories %}
+    <div class="list-group">
+      {% for category in categories %}
+        <a
+          class="list-group-item text-primary"
+          href="{{ url_for('categories_app.details', category_id=category.id) }}"
+        >{{ category.name }}</a>
+      {% endfor %}
+    </div>
+  {% else %}
+    <h3>No categories yet</h3>
+  {% endif %}
+
+  <div class="my-3">
+    <a
+      class="btn btn-primary"
+      href="{{ url_for('categories_app.add') }}"
+    >Add a new category</a>
+  </div>
+{% endblock %}

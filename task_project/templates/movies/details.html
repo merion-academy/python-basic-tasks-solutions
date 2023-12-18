@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Movie #{{ movie.id }}
+{% endblock %}
+
+{% block content %}
+  <h1>Movie details</h1>
+  <div class="list-group">
+    <div class="list-group-item">
+      <div class="row">
+        <div class="col col-2">Title</div>
+        <div class="col col-auto fw-bold">{{ movie.title }}</div>
+      </div>
+    </div>
+    <div class="list-group-item">
+      <div class="row">
+        <div class="col col-2">Year</div>
+        <div class="col col-auto fw-bold">{{ movie.year }}</div>
+      </div>
+    </div>
+    <div class="list-group-item">
+      <div class="row">
+        <div class="col col-2">Category</div>
+        <div class="col col-auto fw-bold">
+          <a
+            class="text-decoration-none"
+            href="{{ url_for('categories_app.details', category_id=movie.category.id) }}"
+          >{{ movie.category.name }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="my-3">
+    <a
+      class="btn btn-secondary"
+      href="{{ url_for('movies_app.list') }}"
+    >Back to movies list</a>
+    <hr>
+    <a
+      class="btn btn-outline-danger"
+      href="{{ url_for('movies_app.delete', movie_id=movie.id) }}"
+      role="button"
+    >Delete</a>
+  </div>
+{% endblock %}

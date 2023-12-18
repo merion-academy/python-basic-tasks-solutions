@@ -1,0 +1,14 @@
+{% macro show_alerts(form) %}
+  {% if form.errors %}
+    <div class="alert alert-danger">
+      {% for name, errors in form.errors.items() %}
+        <div class="h5">{{ form[name].label }}</div>
+        <ul>
+          {% for error in errors %}
+            <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endmacro %}

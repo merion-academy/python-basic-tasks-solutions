@@ -1,0 +1,32 @@
+{% macro delete_form(
+    cancel_url,
+    cancel_btn_text='Cancel',
+    delete_btn_text='Delete')
+  %}
+
+  <div class="my-3">
+    <form method="post">
+      <input
+        type="hidden"
+        name="csrf_token"
+        value="{{ csrf_token() }}"
+      />
+
+      <div
+        class="btn-group"
+        role="group"
+      >
+        <a
+          class="btn btn-secondary"
+          href="{{ cancel_url }}"
+          role="button"
+        >{{ cancel_btn_text }}</a>
+        <span class="mx-1"></span>
+        <button
+          type="submit"
+          class="btn btn-danger"
+        >{{ delete_btn_text }}</button>
+      </div>
+    </form>
+  </div>
+{% endmacro %}

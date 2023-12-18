@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Delete category #{{ category.id }}
+{% endblock %}
+
+{% import 'macros/common-delete.html' as common_delete %}
+
+{% block content %}
+  <h1>
+    Confirm delete category #{{ category.id }}
+    <code>{{ category.title }}</code>
+  </h1>
+
+  <p class="lead">
+    Are you sure you want to delete category
+    <em>{{ category.name }}</em>
+    ?
+  </p>
+
+  {{ common_delete.delete_form(
+  url_for('categories_app.details', category_id=category.id)
+  ) }}
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	{{ category.name }} movies
+{% endblock %}
+
+{% import 'macros/movies-list.html' as ml %}
+
+{% block content %}
+	<h1>{{ category.name }} movies</h1>
+
+  {{ ml.movies_list(movies) }}
+
+  <div class="my-3">
+    <a
+      class="btn btn-secondary"
+      href="{{ url_for('categories_app.details', category_id=category.id) }}"
+    >Back to category</a>
+  </div>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Category #{{ category.id }}
+{% endblock %}
+
+{% block content %}
+  <h1><code>{{ category.name }}</code> movies</h1>
+  <div>
+    <p class="lead">{{ category.description }}</p>
+  </div>
+
+  <div class="my-3">
+    <a
+      class="btn btn-secondary"
+      href="{{ url_for('categories_app.category_movies', category_id=category.id) }}"
+    >Movies in this category</a>
+    <hr>
+    <a
+      class="btn btn-outline-danger"
+      href="{{ url_for('categories_app.delete', category_id=category.id) }}"
+      role="button"
+    >Delete</a>
+  </div>
+{% endblock %}

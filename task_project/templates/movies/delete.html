@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Delete movie #{{ movie.id }}
+{% endblock %}
+
+{% import 'macros/common-delete.html' as common_delete %}
+
+{% block content %}
+  <h1>
+    Confirm delete movie #{{ movie.id }}
+    <code>{{ movie.title }}</code>
+  </h1>
+
+  <p class="lead">
+    Are you sure you want to delete movie
+    <em>{{ movie.title }}</em>
+    ?
+  </p>
+
+  {{ common_delete.delete_form(
+  url_for('movies_app.details', movie_id=movie.id)
+  ) }}
+
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}
+	Register
+{% endblock %}
+
+{% import 'macros/errors.html' as errors_helper %}
+
+{% block content %}
+  <div class="h1">Register</div>
+  <form method="POST">
+    {{ errors_helper.show_alerts(form) }}
+
+    {{ form.hidden_tag() }}
+    <div class="input-group flex-nowrap mb-2">
+      {{ form.username.label(class="input-group-text") }}
+      {{ form.username(class="form-control") }}
+    </div>
+
+    <div class="input-group flex-nowrap mb-2">
+      {{ form.password.label(class="input-group-text") }}
+      {{ form.password(class="form-control") }}
+    </div>
+
+    <div class="input-group flex-nowrap mb-2">
+      {{ form.confirm_password.label(class="input-group-text") }}
+      {{ form.confirm_password(class="form-control") }}
+    </div>
+
+    {{ form.submit(class="mt-2 btn btn-lg btn-primary") }}
+  </form>
+{% endblock %}
